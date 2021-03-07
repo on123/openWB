@@ -174,24 +174,6 @@ function setChargingCurrentgoe () {
 				curl --silent --connect-timeout $goetimeoutlp1 -s http://$goeiplp1/mqtt?payload=alw=0 > /dev/null
 			fi
 		else
-			# START of WAKEUP Logic
-			mylademodus=$(< /var/www/html/openWB/ramdisk/lademodus)
-			if [[ $mylademodus == "2" ]] ; then
-				# Wake Car only in PV Mode
-				carState=$(curl --connect-timeout 2 -s http://192.168.178.137:5000/get/1/state?raw)
-				# echo "Fahrzeug soll mit $current A laden, der Fahrzeugstatus ist: $carState" >> /var/www/html/openWB/ramdisk/wakeup.log
-				if [[ $carState == "asleep" ]] ; then
-					charging_state=$(curl --connect-timeout 2 -s http://192.168.178.137:5000/get/1/charging_state?raw)
-					if [[ $charging_state != "Complete" ]] ; then
-						date >> /var/www/html/openWB/ramdisk/wakeup.log
-						echo "Fahrzeug schläft, Ladestatus ist $charging_state und Fahrzeug soll laden mit $current A. Fahrzeug wird daher jetzt geweckt!" >> /var/www/html/openWB/ramdisk/wakeup.log
-						curl --silent --connect-timeout 2 curl http://192.168.178.137:5000/command/1/wake_up >> /var/www/html/openWB/ramdisk/wakeup.log
-						echo -e "\n\r\n\r" >> /var/www/html/openWB/ramdisk/wakeup.log
-					fi
-				fi
-			fi
-			# END of WAKEUP Logic
-
 			output=$(curl --connect-timeout $goetimeoutlp1 -s http://$goeiplp1/status)
 			state=$(echo $output | jq -r '.alw')
 			if ((state == "0")) ; then
