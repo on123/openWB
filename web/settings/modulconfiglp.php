@@ -685,6 +685,7 @@
 									<option <?php if($socmodulold == "soc_volvo") echo "selected" ?> value="soc_volvo">Volvo</option>
 									<option <?php if($socmodulold == "soc_mypeugeot") echo "selected" ?> value="soc_mypeugeot">MyPeugeot</option>
 									<option <?php if($socmodulold == "soc_myopel") echo "selected" ?> value="soc_myopel">MyOpel</option>
+									<option <?php if($socmodulold == "soc_teslalogger") echo "selected" ?> value="soc_teslalogger">Teslalogger</option>
 								</select>
 							</div>
 						</div>
@@ -1195,6 +1196,28 @@
 									</div>
 								</div>
 							</div>
+							<div id="socmteslalogger1" class="hide">
+								<div class="form-group">
+									<div class="form-row mb-1">
+										<label for="teslaloggerbaseurl" class="col-md-4 col-form-label">Abfrage URL</label>
+										<div class="col">
+											<input class="form-control" type="text" name="teslaloggerbaseurl" id="teslaloggerbaseurl" value="<?php echo htmlspecialchars($teslaloggerbaseurlold) ?>">
+											<span class="form-text small">
+												Gültige Werte none, "url". Basis URL des Teslaloggers incl. Port. z.B. http://teslalogger:5000.
+											</span>
+										</div>
+									</div>
+									<div class="form-row mb-1">
+										<label for="teslaloggercarnr" class="col-md-4 col-form-label">CarID aus Teslalogger</label>
+										<div class="col">
+											<input class="form-control" type="text" name="teslaloggercarnr" id="teslaloggercarnr" value="<?php echo htmlspecialchars($teslaloggercarnrold) ?>">
+											<span class="form-text small">
+												Fahrzeugnummer des Fahrzeugs im Teslalogger - im Standard 1.
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 					<script>
@@ -1353,6 +1376,7 @@
 							hideSection('socmyrenault');
 							hideSection('socmypeugeot');
 							hideSection('socmyopel');
+							hideSection('socmteslalogger1');
 
 							if($('#socmodul').val() == 'none') {
 								showSection('socmnone');
@@ -1410,6 +1434,10 @@
 							if($('#socmodul').val() == 'soc_myopel') {
 								showSection('socmyopel');
 							}
+							if($('#socmodul').val() == 'soc_teslalogger') {
+								showSection('socmteslalogger1');
+							}
+
 						}
 
 						$(function() {
@@ -2377,7 +2405,7 @@
 							hideSection('socmzeronglp2');
 							hideSection('socmypeugeotlp2');
 							hideSection('socmyopellp2');
-
+		
 							if($('#socmodul1').val() == 'none') {
 								showSection('socmnone1');
 							} else {
@@ -2427,7 +2455,7 @@
 							}
 							if($('#socmodul1').val() == 'soc_myopellp2') {
 								showSection('socmyopellp2');
-							}
+							}				
 						}
 
 						function display_lastmanagement() {
