@@ -1199,11 +1199,11 @@
 							<div id="socmteslalogger1" class="hide">
 								<div class="form-group">
 									<div class="form-row mb-1">
-										<label for="teslaloggerbaseurl" class="col-md-4 col-form-label">Abfrage URL</label>
+										<label for="teslaloggerbaseurl" class="col-md-4 col-form-label">Teslalogger URL</label>
 										<div class="col">
 											<input class="form-control" type="text" name="teslaloggerbaseurl" id="teslaloggerbaseurl" value="<?php echo htmlspecialchars($teslaloggerbaseurlold) ?>">
 											<span class="form-text small">
-												Gültige Werte none, "url". Basis URL des Teslaloggers incl. Port. z.B. http://teslalogger:5000.
+												Basis URL des Teslaloggers incl. Port. z.B. http://teslalogger:5000.
 											</span>
 										</div>
 									</div>
