@@ -82,7 +82,7 @@ if [[ $mylademodus == "2" ]] && [[ $myladestatus == "1" ]] ; then
             echo "$date -> charging_state: $charging_state" >> $LOGFILE
         fi
 
-        if [[ $charging_state != "Complete" ]] ; then
+        if [[ $charging_state != "Complete" ]] && [[ $charging_state != "Disconnected" ]] ; then
             date=$(date)
             echo "$date -> Fahrzeug schläft, Ladestatus ist $charging_state und Fahrzeug soll laden mit $myllsoll A. Fahrzeug wird daher jetzt geweckt!" >> $LOGFILE
             curl --silent --connect-timeout 2 curl $TESLALOGGERWAKEUPURL >> $LOGFILE
